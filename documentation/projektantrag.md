@@ -74,5 +74,3 @@ Eine interaktive Webanwendung, die Nutzern hilft, Orte zu finden, an denen sie s
 
 ---
 
-**Warum dieses Projekt?**  
-Es ist einfach, macht Spaß und hilft Leuten, coole Orte zu finden. Außerdem lernst du dabei viel über Webentwicklung! 🚀
