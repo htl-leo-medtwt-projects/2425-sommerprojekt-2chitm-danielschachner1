@@ -70,7 +70,7 @@ Eine interaktive Webanwendung, die Nutzern hilft, Orte zu finden, an denen sie s
 - **Externe Library**: Leaflet.js für die interaktive Karte.  
 - **Automatisierung**: Ortsdaten werden als JSON gespeichert; Inhalte dynamisch generiert.  
 - **LocalStorage**: Persistente Speicherung von Nutzereinstellungen und Favoriten.  
-- **Responsivität**: Mobile-first Design mit Media Queries für alle Bildschirmgrößen.  
+  - **Responsivität**: Mobile-first Design mit Media Queries für alle Bildschirmgrößen.  
 
 ---
 

@@ -1,0 +1,28 @@
+.place-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.place-image {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.place-card:hover .place-image {
+    transform: scale(1.05);
+}
+
+.book-btn {
+    transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #6D4C3D;
+    transform: scale(1.05);
+}

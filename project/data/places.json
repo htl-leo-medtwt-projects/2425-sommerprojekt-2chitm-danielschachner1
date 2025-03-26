@@ -1,0 +1,274 @@
+{
+    "places": [
+        {
+            "name": "Café Bliss",
+            "type": "cafe",
+            "mood": ["gemütlich", "ruhig"],
+            "description": "Gemütliches Café mit ruhiger Atmosphäre",
+            "lat": 52.52,
+            "lng": 13.405,
+            "rating": 4.7,
+            "image": "../img/cafeBliss.jpeg"
+        },
+        {
+            "name": "Quiet Study Hub",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Moderner Lernort mit schnellem WLAN",
+            "lat": 52.515,
+            "lng": 13.4,
+            "rating": 4.5,
+            "image": "../img/studyHub.jpg"
+        },
+        {
+            "name": "Co-Working Space Berlin",
+            "type": "coworking",
+            "mood": ["produktiv", "kreativ"],
+            "description": "Professioneller Arbeitsplatz mit Meetingräumen",
+            "lat": 52.51,
+            "lng": 13.41,
+            "rating": 4.8,
+            "image": "../img/coWorkingSpaceBerlin.webp"
+        },
+        {
+            "name": "Park Bench Retreat",
+            "type": "park",
+            "mood": ["ruhig", "gemütlich"],
+            "description": "Idyllischer Ort im Grünen zum Entspannen",
+            "lat": 52.525,
+            "lng": 13.395,
+            "rating": 4.2,
+            "image": "../img/parkBenchRetreat.jpg"
+        },
+        {
+            "name": "Bohème Café",
+            "type": "cafe",
+            "mood": ["kreativ", "lebendig"],
+            "description": "Künstlerisches Café mit Live-Musik",
+            "lat": 52.518,
+            "lng": 13.408,
+            "rating": 4.6,
+            "image": "../img/laBohemeCafe.webp"
+        },
+        {
+            "name": "Stadtbibliothek Mitte",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Große öffentliche Bibliothek mit Lesesälen",
+            "lat": 52.522,
+            "lng": 13.402,
+            "rating": 4.4,
+            "image": "../img/stadtBibliothekMitte.avif"
+        },
+        {
+            "name": "Urban Office",
+            "type": "coworking",
+            "mood": ["produktiv", "lebendig"],
+            "description": "Modernes Co-Working mit Tageskarten",
+            "lat": 52.513,
+            "lng": 13.415,
+            "rating": 4.9,
+            "image": "../img/coWorkingSpaceBerlin2.webp"
+        },
+        {
+            "name": "Volkspark Friedrichshain",
+            "type": "park",
+            "mood": ["ruhig", "gemütlich"],
+            "description": "Großer Park mit vielen ruhigen Ecken",
+            "lat": 52.531,
+            "lng": 13.438,
+            "rating": 4.3,
+            "image": "../img/volksparkFriedrichshain.webp"
+        },
+        {
+            "name": "Kaffeeklatsch",
+            "type": "cafe",
+            "mood": ["gemütlich", "lebendig"],
+            "description": "Traditionelles Café mit hausgemachtem Kuchen",
+            "lat": 52.507,
+            "lng": 13.392,
+            "rating": 4.8,
+            "image": "../img/kaffeeklatsch.jpg"
+        },
+        {
+            "name": "TU Bibliothek",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Wissenschaftliche Bibliothek mit vielen Arbeitsplätzen",
+            "lat": 52.512,
+            "lng": 13.327,
+            "rating": 4.7,
+            "image": "../img/tuBibliothekBerlin.jpg"
+        },
+        {
+            "name": "The Hive",
+            "type": "coworking",
+            "mood": ["kreativ", "produktiv"],
+            "description": "Kreativer Co-Working Space für Startups",
+            "lat": 52.501,
+            "lng": 13.418,
+            "rating": 4.6,
+            "image": "../img/theHive.jpg"
+        },
+        {
+            "name": "Botanischer Garten",
+            "type": "park",
+            "mood": ["ruhig", "gemütlich"],
+            "description": "Ruhiger Ort mit botanischer Vielfalt",
+            "lat": 52.454,
+            "lng": 13.307,
+            "rating": 4.5,
+            "image": "../img/botanischerGarten.jpeg"
+        },
+        {
+            "name": "Espresso Lounge",
+            "type": "cafe",
+            "mood": ["kreativ", "lebendig"],
+            "description": "Spezialitätenkaffee in modernem Ambiente",
+            "lat": 52.499,
+            "lng": 13.422,
+            "rating": 4.9,
+            "image": "../img/espressoLounge.jpg"
+        },
+        {
+            "name": "Amerika-Gedenkbibliothek",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Große öffentliche Bibliothek mit Medienzentrum",
+            "lat": 52.501,
+            "lng": 13.386,
+            "rating": 4.5,
+            "image": "../img/amerikaGedenkbibliothek.jpg"
+        },
+        {
+            "name": "WeWork Potsdamer Platz",
+            "type": "coworking",
+            "mood": ["produktiv", "lebendig"],
+            "description": "Premium Co-Working Space mit allen Annehmlichkeiten",
+            "lat": 52.509,
+            "lng": 13.378,
+            "rating": 4.7,
+            "image": "../img/weWorkPotsdamerPlatz.jpg"
+        },
+        {
+            "name": "Tempelhofer Feld",
+            "type": "park",
+            "mood": ["lebendig", "ruhig"],
+            "description": "Ehemaliger Flughafen mit weitläufigen Wiesen",
+            "lat": 52.473,
+            "lng": 13.405,
+            "rating": 4.8,
+            "image": "../img/tempelhoferFeld.webp"
+        },
+        {
+            "name": "Backwerk Café",
+            "type": "cafe",
+            "mood": ["lebendig", "gemütlich"],
+            "description": "Günstiges Café mit frischen Backwaren",
+            "lat": 52.533,
+            "lng": 13.412,
+            "rating": 4.1,
+            "image": "../img/bachwerkCafe.jpg"
+        },
+        {
+            "name": "Humboldt-Universitätsbibliothek",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Historische Bibliothek mit modernen Arbeitsbereichen",
+            "lat": 52.518,
+            "lng": 13.394,
+            "rating": 4.6,
+            "image": "../img/humboldtBibliothek.jpg"
+        },
+        {
+            "name": "Factory Berlin",
+            "type": "coworking",
+            "mood": ["kreativ", "lebendig"],
+            "description": "Exklusiver Co-Working Space für Kreative",
+            "lat": 52.543,
+            "lng": 13.353,
+            "rating": 4.9,
+            "image": "../img/factoryBerlin.jpg"
+        },
+        {
+            "name": "Gleisdreieckpark",
+            "type": "park",
+            "mood": ["lebendig", "ruhig"],
+            "description": "Urbaner Park mit Industriecharme",
+            "lat": 52.499,
+            "lng": 13.377,
+            "rating": 4.4,
+            "image": "../img/gleisdreieckPark.webp"
+        },
+        {
+            "name": "Five Elephant",
+            "type": "cafe",
+            "mood": ["kreativ", "gemütlich"],
+            "description": "Berühmte Kaffeerösterei mit Café",
+            "lat": 52.494,
+            "lng": 13.421,
+            "rating": 4.8,
+            "image": "../img/fiveElephant.jpg"
+        },
+        {
+            "name": "Staatsbibliothek",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Eine der größten wissenschaftlichen Bibliotheken Deutschlands",
+            "lat": 52.507,
+            "lng": 13.371,
+            "rating": 4.7,
+            "image": "../img/staatsbibliothekberlin.jpg"
+        },
+        {
+            "name": "Mindspace",
+            "type": "coworking",
+            "mood": ["kreativ", "produktiv"],
+            "description": "Designorientierter Co-Working Space",
+            "lat": 52.53,
+            "lng": 13.403,
+            "rating": 4.5,
+            "image": "../img/mindspaceBerlin.jpg"
+        },
+        {
+            "name": "Mauerpark",
+            "type": "park",
+            "mood": ["lebendig", "gemütlich"],
+            "description": "Beliebter Park mit Flohmarkt und Freiluftkino",
+            "lat": 52.541,
+            "lng": 13.402,
+            "rating": 4.6,
+            "image": "../img/mauerparkBerlin.jpg"
+        },
+        {
+            "name": "The Barn",
+            "type": "cafe",
+            "mood": ["kreativ", "gemütlich"],
+            "description": "Third-Wave Kaffee mit handgebrühten Spezialitäten",
+            "lat": 52.527,
+            "lng": 13.413,
+            "rating": 4.9,
+            "image": "../img/theBarn.webp"
+        },
+        {
+            "name": "Bibliothek am Luisenbad",
+            "type": "library",
+            "mood": ["produktiv", "ruhig"],
+            "description": "Moderne Stadtteilbibliothek mit Arbeitsplätzen",
+            "lat": 52.543,
+            "lng": 13.383,
+            "rating": 4.3,
+            "image": "../img/bibliothek_am_luisenbad.avif"
+        },
+        {
+            "name": "Rent24",
+            "type": "coworking",
+            "mood": ["produktiv", "lebendig"],
+            "description": "Flexible Co-Working Spaces an mehreren Standorten",
+            "lat": 52.501,
+            "lng": 13.398,
+            "rating": 4.4,
+            "image": "../img/rent24.jpg"
+        }
+    ]
+}

@@ -1,0 +1,236 @@
+/* ===== GLOBALE STILE ===== */
+:root {
+    --primary: #6D4C3D;
+    --secondary: #C9A88D;
+    --accent: #E2B4A0;
+    --dark: #4A3F35;
+    --light: #F8F1E9;
+    --white: #FFFFFF;
+    --gray-light: #F0F0F0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.15);
+    --radius-sm: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.25s ease;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+  }
+  
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* ===== NAVIGATION ===== */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary);
+    position: relative;
+  }
+  
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary);
+    padding: 1rem;
+    z-index: 100;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-link {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  
+  .nav-link:hover {
+    background-color: var(--accent);
+    color: var(--dark);
+  }
+  
+  .login-btn {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--accent);
+    color: var(--dark);
+    border-radius: 2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-align: center;
+    transition: var(--transition);
+  }
+  
+  /* ===== HERO SECTION ===== */
+  .hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    background: url('../img/backgroundImageIndex.jpg') no-repeat center center/cover;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  /* ===== KARTEN & PLACES ===== */
+  .places-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .place-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  
+  .place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .place-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .place-content {
+    padding: 1.25rem;
+  }
+  
+  .place-rating {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--accent);
+    border-radius: 1rem;
+    font-weight: 600;
+  }
+  
+  /* ===== FILTER ===== */
+  .filters {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  
+  .filter-control {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  /* ===== MEDIA QUERIES ===== */
+  @media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      position: static;
+      flex-direction: row;
+      width: auto;
+      background: transparent;
+      padding: 0;
+    }
+    
+    .nav-link {
+      margin: 0 0.5rem;
+    }
+    
+    .login-btn {
+      margin-top: 0;
+      margin-left: 1rem;
+    }
+    
+    .places-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .filter-row {
+      flex-wrap: nowrap;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .places-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .navbar {
+      padding: 1rem 2rem;
+    }
+    
+    .container {
+      padding: 0 2rem;
+    }
+  }

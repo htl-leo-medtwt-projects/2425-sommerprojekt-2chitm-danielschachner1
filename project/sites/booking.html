@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orte buchen | FindYourSpace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/responsive.css">
+    <script src="../scripts/booking.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6D4C3D',
+                        secondary: '#C9A88D',
+                        accent: '#E2B4A0',
+                        dark: '#4A3F35',
+                        light: '#F8F1E9',
+                        white: '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1 class="text-3xl font-bold">FindYourSpace</h1>
+            <button class="menu-toggle md:hidden">☰</button>
+        </div>
+        
+        <div class="nav-links">
+            <div class="nav-links-center">
+                <a href="../index.html" class="nav-link">Startseite</a>
+                <a href="./booking.html" class="nav-link bg-accent text-dark">Orte suchen</a>
+                <a href="#" class="nav-link">Community</a>
+            </div>
+            <a href="#" class="login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-8">Verfügbare Orte</h1>
+        
+        <div class="filters bg-white p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-xl font-semibold mb-4">Filter</h2>
+            <div class="flex flex-wrap gap-4">
+                <select id="category-filter" class="px-4 py-2 rounded-full border border-secondary">
+                    <option value="all">Alle Kategorien</option>
+                    <option value="cafe">Café</option>
+                    <option value="library">Bibliothek</option>
+                    <option value="coworking">Co-Working Space</option>
+                    <option value="park">Park</option>
+                </select>
+                
+                <select id="mood-filter" class="px-4 py-2 rounded-full border border-secondary">
+                    <option value="all">Alle Stimmungen</option>
+                    <option value="gemütlich">Gemütlich</option>
+                    <option value="kreativ">Kreativ</option>
+                    <option value="produktiv">Produktiv</option>
+                    <option value="lebendig">Lebendig</option>
+                    <option value="ruhig">Ruhig</option>
+                </select>
+                
+                <button id="apply-filters" class="px-6 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition">
+                    Filter anwenden
+                </button>
+            </div>
+        </div>
+        
+        <div id="places-list" class="places-grid"></div>
+    </div>
+</body>
+</html>
