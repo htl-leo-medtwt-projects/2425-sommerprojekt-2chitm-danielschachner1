@@ -1,78 +1,78 @@
-<!DOCTYPE html>
-<html lang="de">
+    <!DOCTYPE html>
+    <html lang="de">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FindYourSpace</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FindYourSpace</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./styles/index.css">
-    <script src="./scripts/index.js" defer></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6D4C3D',
-                        secondary: '#C9A88D',
-                        accent: '#E2B4A0',
-                        dark: '#4A3F35',
-                        light: '#F8F1E9',
-                        darkText: '#4A3F35',
-                        white: '#FFFFFF',
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="./styles/index.css">
+        <script src="./scripts/index.js" defer></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#6D4C3D',
+                            secondary: '#C9A88D',
+                            accent: '#E2B4A0',
+                            dark: '#4A3F35',
+                            light: '#F8F1E9',
+                            darkText: '#4A3F35',
+                            white: '#FFFFFF',
+                        }
                     }
                 }
             }
-        }
-    </script>
-
-   
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-</head>
-
-<body class="bg-light text-dark relative">
-
-    <div class="blur-overlay"></div>
-
-<nav class="bg-primary text-white p-6 flex items-center justify-between shadow-lg relative z-10">
-    <h1 class="text-3xl font-bold">FindYourSpace</h1>
-
-    <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-8">
-        <a href="#" class="nav-link">Startseite</a>
-        <a href="#" class="nav-link">Orte buchen</a>
-        <a href="#" class="nav-link">Community</a>
-    </div>
-
-    <div>
-        <a href="#" class="px-5 py-2 bg-accent rounded-full text-white font-semibold hover:bg-opacity-80 transition">
-            Login
-        </a>
-    </div>
-</nav>
-
-
-
-    <div class="relative w-full h-96 flex items-center justify-center text-white text-center p-8 z-10">
-        <div class="bg-black bg-opacity-70 p-8 rounded-xl shadow-lg">
-            <h1 class="text-5xl font-extrabold">FindYourSpace</h1>
-            <p class="mt-4 text-xl">Finde deinen perfekten Ort zum Lernen, Arbeiten & Entspannen</p>
-            <input type="text" placeholder="Suche nach Orten..." class="mt-6 px-5 py-3 w-96 text-black rounded-full shadow-lg focus:outline-none">
-        </div>
-    </div>
-
-    <div class="h-96 w-full p-8 relative z-10">
-        <div id="map"></div>
-    </div>
-
-    <div class="p-8 relative z-10">
-        <h2 class="text-3xl font-bold text-center">Top-Bewertete Orte</h2>
-        <div id="places-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        </div>
-    </div>
+        </script>
 
     
-</body>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    </head>
 
-</html>
+    <body class="bg-light text-dark relative">
+
+        <div class="blur-overlay"></div>
+
+    <nav class="bg-primary text-white p-6 flex items-center justify-between shadow-lg relative z-10">
+        <h1 class="text-3xl font-bold">FindYourSpace</h1>
+
+        <div class="absolute left-1/2 transform -translate-x-1/2 flex space-x-8">
+            <a href="#" class="nav-link">Startseite</a>
+            <a href="#" class="nav-link">Orte buchen</a>
+            <a href="#" class="nav-link">Community</a>
+        </div>
+
+        <div>
+            <a href="#" class="px-5 py-2 bg-accent rounded-full text-white font-semibold hover:bg-opacity-80 transition">
+                Login
+            </a>
+        </div>
+    </nav>
+
+
+
+        <div class="relative w-full h-96 flex items-center justify-center text-white text-center p-8 z-10">
+            <div class="bg-black bg-opacity-70 p-8 rounded-xl shadow-lg">
+                <h1 class="text-5xl font-extrabold">FindYourSpace</h1>
+                <p class="mt-4 text-xl">Finde deinen perfekten Ort zum Lernen, Arbeiten & Entspannen</p>
+                <input type="text" placeholder="Suche nach Orten..." class="mt-6 px-5 py-3 w-96 text-black rounded-full shadow-lg focus:outline-none">
+            </div>
+        </div>
+
+        <div class="h-96 w-full p-8 relative z-10">
+            <div id="map"></div>
+        </div>
+
+        <div class="p-8 relative z-10">
+            <h2 class="text-3xl font-bold text-center">Top-Bewertete Orte</h2>
+            <div id="places-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            </div>
+        </div>
+
+        
+    </body>
+
+    </html>
