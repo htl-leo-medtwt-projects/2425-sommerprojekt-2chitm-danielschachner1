@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation
+    
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
@@ -35,26 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
-    const map = L.map('map', {
-        zoomControl: false,
-        attributionControl: false
-    }).setView([52.52, 13.405], 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-
-    L.control.zoom({
-        position: 'topright'
-    }).addTo(map);
-
-    L.control.attribution({
-        position: 'bottomright',
-        prefix: '<a href="https://leafletjs.com/" target="_blank">Leaflet</a>'
-    }).addTo(map);
-
+    // Modal Funktionen
     const placeModal = document.getElementById('place-modal');
     const closeModal = document.getElementById('close-modal');
     const favoriteBtn = document.getElementById('favorite-btn');
@@ -62,10 +44,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentPlace = null;
 
+    closeModal.addEventListener('click', () => {
+        placeModal.classList.add('hidden');
+    });
+
+    favoriteBtn.addEventListener('click', () => {
+        toggleFavorite(currentPlace.name);
+        updateFavoriteIcon();
+
+        setTimeout(() => {
+            loadFavorites();
+        }, 300);
+    });
+
+    function toggleFavorite(placeName) {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const index = favorites.indexOf(placeName);
+        
+        if (index === -1) {
+            favorites.push(placeName);
+        } else {
+            favorites.splice(index, 1);
+        }
+        
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    function updateFavoriteIcon() {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const isFavorite = favorites.includes(currentPlace.name);
+        heartIcon.textContent = isFavorite ? '♥' : '♡';
+    }
+
     function showPlaceModal(place) {
         currentPlace = place;
         document.getElementById('modal-place-name').textContent = place.name;
-        document.getElementById('modal-place-image').src = `./img/${place.image}`;
+        document.getElementById('modal-place-image').src = place.image;
         document.getElementById('modal-place-image').alt = place.name;
         document.getElementById('modal-place-rating').textContent = place.rating;
         document.getElementById('modal-place-description').textContent = place.description;
@@ -100,72 +114,60 @@ document.addEventListener('DOMContentLoaded', function() {
         placeModal.classList.remove('hidden');
     }
 
-    function toggleFavorite(placeName) {
+    const favoritesContainer = document.getElementById('favorites-container');
+    const noFavorites = document.getElementById('no-favorites');
+
+    function loadFavorites() {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        const index = favorites.indexOf(placeName);
         
-        if (index === -1) {
-            favorites.push(placeName);
-        } else {
-            favorites.splice(index, 1);
+        if (favorites.length === 0) {
+            noFavorites.classList.remove('hidden');
+            favoritesContainer.innerHTML = '';
+            return;
         }
         
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
-
-    function updateFavoriteIcon() {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        const isFavorite = favorites.includes(currentPlace.name);
-        heartIcon.textContent = isFavorite ? '♥' : '♡';
-    }
-
-    closeModal.addEventListener('click', () => {
-        placeModal.classList.add('hidden');
-    });
-
-    favoriteBtn.addEventListener('click', () => {
-        toggleFavorite(currentPlace.name);
-        updateFavoriteIcon();
-    });
-
-    // Orte laden und anzeigen
-    fetch('./data/places.json')
-        .then(response => response.json())
-        .then(data => {
-            const placesContainer = document.getElementById('places-container');
-            
-            data.places.slice(0, 4).forEach(place => {
-                const marker = L.marker([place.lat, place.lng]).addTo(map)
-                    .bindPopup(`
-                        <b>${place.name}</b><br>
-                        <small>${getTypeName(place.type)}</small><br>
-                        ⭐ ${place.rating}
-                    `);
-
-                const placeCard = document.createElement('div');
-                placeCard.className = 'place-card dark:bg-grey';
-                placeCard.innerHTML = `
-                    <img src="./img/${place.image}" alt="${place.name}" class="place-image">
-                    <div class="place-content">
-                        <h3 class="text-xl font-semibold dark:text-dark">${place.name}</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-sm text-gray-500 dark:text-gray-600">${getTypeName(place.type)}</span>
-                            <span class="place-rating">⭐ ${place.rating}</span>
+        fetch('../data/places.json')
+            .then(response => response.json())
+            .then(data => {
+                const favoritePlaces = data.places.filter(place => 
+                    favorites.includes(place.name)
+                );
+                
+                if (favoritePlaces.length === 0) {
+                    noFavorites.classList.remove('hidden');
+                    favoritesContainer.innerHTML = '';
+                    return;
+                }
+                
+                noFavorites.classList.add('hidden');
+                favoritesContainer.innerHTML = '';
+                
+                favoritePlaces.forEach(place => {
+                    const placeCard = document.createElement('div');
+                    placeCard.className = 'place-card dark:bg-white';
+                    placeCard.innerHTML = `
+                        <img src="../img/${place.image}" alt="${place.name}" class="place-image">
+                        <div class="place-content">
+                            <h3 class="text-xl font-semibold dark:text-dark">${place.name}</h3>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-sm text-gray-500 dark:text-gray-600">${getTypeName(place.type)}</span>
+                                <span class="place-rating">⭐ ${place.rating}</span>
+                            </div>
+                            <button class="book-btn mt-4">Details anzeigen</button>
                         </div>
-                        <button class="book-btn mt-4">Details anzeigen</button>
-                    </div>
-                `;
-                
-                placeCard.querySelector('.book-btn').addEventListener('click', () => {
-                    showPlaceModal(place);
+                    `;
+                    
+                    placeCard.querySelector('.book-btn').addEventListener('click', () => {
+                        showPlaceModal(place);
+                    });
+                    
+                    favoritesContainer.appendChild(placeCard);
                 });
-                
-                placesContainer.appendChild(placeCard);
+            })
+            .catch(error => {
+                console.error('Fehler beim Laden der Orte:', error);
             });
-        })
-        .catch(error => {
-            console.error('Fehler beim Laden der Orte:', error);
-        });
+    }
 
     function getTypeName(type) {
         const typeNames = {
@@ -176,4 +178,9 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         return typeNames[type] || type;
     }
+
+
+
+    
+    loadFavorites();
 });

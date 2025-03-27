@@ -13,98 +13,138 @@
     --radius-sm: 8px;
     --radius-lg: 12px;
     --transition: all 0.25s ease;
-  }
-  
-  * {
+}
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  body {
+}
+
+body {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
     color: var(--dark);
     background-color: var(--light);
-  }
-  
-  /* ===== LAYOUT ===== */
-  .container {
+}
+
+/* ===== LAYOUT ===== */
+.container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
-  }
-  
-  /* ===== NAVIGATION ===== */
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+  display: flex;
+  flex-wrap: wrap; /* Wichtig für Mobile */
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary);
+  position: relative;
+}
+
+.nav-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Nimmt volle Breite ein im Mobile */
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: block;
+}
+
+.nav-links {
+  display: none;
+  width: 100%; /* Nimmt volle Breite ein im Mobile */
+  background-color: var(--primary);
+}
+
+.nav-links.active {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.nav-links-center {
+  display: flex;
+  flex-direction: column; /* Mobile: Spaltenlayout */
+  gap: 0.5rem;
+}
+
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  background-color: var(--accent);
+  color: var(--dark);
+}
+
+.login-btn {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: var(--accent);
+  color: var(--dark);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* ===== DESKTOP STYLES ===== */
+@media (min-width: 768px) {
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--primary);
-    position: relative;
+      flex-wrap: nowrap;
+      padding: 1rem 2rem;
   }
-  
+
   .nav-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
+      width: auto;
+      justify-content: flex-start;
   }
-  
+
   .menu-toggle {
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: block;
+      display: none;
   }
-  
+
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--primary);
-    padding: 1rem;
-    z-index: 100;
+      display: flex;
+      width: auto;
+      background: transparent;
+      justify-content: center;
+      flex-grow: 1; /* Nimmt verfügbaren Platz ein */
   }
-  
-  .nav-links.active {
-    display: flex;
+
+  .nav-links-center {
+      flex-direction: row;
+      gap: 1rem;
   }
-  
-  .nav-link {
-    color: var(--white);
-    text-decoration: none;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    transition: var(--transition);
-  }
-  
-  .nav-link:hover {
-    background-color: var(--accent);
-    color: var(--dark);
-  }
-  
+
   .login-btn {
-    display: inline-block;
-    padding: 0.5rem 1.25rem;
-    background-color: var(--accent);
-    color: var(--dark);
-    border-radius: 2rem;
-    font-weight: 600;
-    margin-top: 1rem;
-    text-align: center;
-    transition: var(--transition);
+      margin: 0 0 0 2rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      display: inline-block;
   }
-  
-  /* ===== HERO SECTION ===== */
-  .hero {
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
     position: relative;
     height: 50vh;
     min-height: 400px;
@@ -114,123 +154,210 @@
     text-align: center;
     color: var(--white);
     background: url('../img/backgroundImageIndex.jpg') no-repeat center center/cover;
-  }
-  
-  .hero-content {
+}
+
+.hero-content {
     position: relative;
     z-index: 2;
     max-width: 800px;
     padding: 2rem;
-  }
-  
-  .hero h1 {
+}
+
+.hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     line-height: 1.2;
-  }
-  
-  /* ===== KARTEN & PLACES ===== */
-  .places-grid {
+}
+
+/*  KARTEN & PLACES  */
+.places-grid {
     display: grid;
     gap: 1.5rem;
     margin: 2rem 0;
-  }
-  
-  .place-card {
+}
+
+.place-card {
     background: var(--white);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-  }
-  
-  .place-card:hover {
+}
+
+.place-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-  }
-  
-  .place-image {
+}
+
+.place-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
-  }
-  
-  .place-content {
+}
+
+.place-content {
     padding: 1.25rem;
-  }
-  
-  .place-rating {
+}
+
+.place-rating {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     background-color: var(--accent);
     border-radius: 1rem;
     font-weight: 600;
-  }
-  
-  /* ===== FILTER ===== */
-  .filters {
+}
+
+/*  FILTER  */
+.filters {
     background: var(--white);
     border-radius: var(--radius-lg);
     padding: 1rem;
     margin: 1.5rem 0;
     box-shadow: var(--shadow-sm);
-  }
-  
-  .filter-row {
+}
+
+.filter-row {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     align-items: center;
-  }
-  
-  .filter-control {
+}
+
+.filter-control {
     flex: 1;
     min-width: 150px;
-  }
-  
-  /* ===== MEDIA QUERIES ===== */
-  @media (min-width: 768px) {
+}
+
+/*  MEDIA QUERIES  */
+@media (min-width: 768px) {
     .menu-toggle {
-      display: none;
+        display: none;
+    }
+    
+    .nav-brand {
+        width: auto;
     }
     
     .nav-links {
-      display: flex;
-      position: static;
-      flex-direction: row;
-      width: auto;
-      background: transparent;
-      padding: 0;
+        display: flex;
+        position: static;
+        flex-direction: row;
+        width: auto;
+        background: transparent;
+        padding: 0;
+        justify-content: center;
+        flex-grow: 1;
+    }
+    
+    .nav-links-center {
+        flex-direction: row;
+        gap: 1rem;
     }
     
     .nav-link {
-      margin: 0 0.5rem;
+        margin: 0;
     }
     
     .login-btn {
-      margin-top: 0;
-      margin-left: 1rem;
+        margin-top: 0;
+        margin-left: auto;
     }
     
     .places-grid {
-      grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .filter-row {
-      flex-wrap: nowrap;
+        flex-wrap: nowrap;
     }
-  }
-  
-  @media (min-width: 1024px) {
+}
+
+@media (min-width: 1024px) {
     .places-grid {
-      grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
     
     .navbar {
-      padding: 1rem 2rem;
+        padding: 1rem 2rem;
     }
     
     .container {
-      padding: 0 2rem;
+        padding: 0 2rem;
     }
-  }
+}
+
+
+
+/* Am Ende der Datei hinzufügen */
+.dark {
+  --primary: #A67C52; 
+  --secondary: #4E3A2E;
+  --accent: #C28F76; 
+  --dark: #EAE0D5; 
+  --light: #2F2722;
+  --white: #181818;
+  --gray-light: #3D332D;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --radius-sm: 8px;
+  --radius-lg: 12px;
+  --transition: all 0.25s ease;
+}
+
+
+.dark body {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.dark .place-card {
+  background-color: var(--white);
+}
+
+.dark .place-content {
+  color: var(--dark);
+}
+
+.dark .nav-link {
+  color: var(--dark);
+}
+
+.dark .login-btn {
+  background-color: var(--accent);
+  color: var(--light);
+}
+
+.dark .hero {
+  color: var(--dark);
+}
+
+.dark .hero div {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark input {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+
+.dark .filters {
+  background-color: var(--light); 
+  color: var(--dark); 
+  border-color: var(--secondary);
+}
+
+
+
+.leaflet-top {
+  z-index: 20 !important;
+}
+
+.leaflet-bottom {
+  z-index: 20 !important;
+}
+
+.leaflet-control {
+  z-index: 20 !important;
+}

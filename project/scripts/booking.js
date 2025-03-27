@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ===== MOBILE NAVIGATION =====
+
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
@@ -22,14 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const applyFiltersBtn = document.getElementById('apply-filters');
     const placesList = document.getElementById('places-list');
 
-    // Daten laden
     fetch('../data/places.json')
         .then(response => response.json())
         .then(data => {
             placesData = data.places;
             renderPlaces(placesData);
             
-            // URL-Parameter auswerten
             const urlParams = new URLSearchParams(window.location.search);
             const typeParam = urlParams.get('type');
             
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Fehler beim Laden der Orte:', error);
         });
 
-    // Filter anwenden
     function applyFilters() {
         const selectedCategory = categoryFilter.value;
         const selectedMood = moodFilter.value;
@@ -56,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
         renderPlaces(filteredPlaces);
     }
 
-    // Orte anzeigen
     function renderPlaces(places) {
         placesList.innerHTML = '';
         
@@ -91,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Hilfsfunktionen
     function getTypeName(type) {
         const typeNames = {
             'cafe': 'Café',
@@ -117,4 +112,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     applyFiltersBtn.addEventListener('click', applyFilters);
+});
+
+
+
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const darkIcon = document.getElementById('dark-icon');
+const lightIcon = document.getElementById('light-icon');
+
+if (localStorage.getItem('darkMode') === 'enabled') {
+    document.documentElement.classList.add('dark');
+    darkIcon.classList.remove('hidden');
+    lightIcon.classList.add('hidden');
+}
+
+    darkModeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    
+    if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('darkMode', 'enabled');
+
+
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
+    }
 });
