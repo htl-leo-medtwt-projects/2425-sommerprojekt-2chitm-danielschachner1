@@ -22,6 +22,7 @@
 ### Screenshot der GitHub-Insights Statistik:
 
 ![GitHub Insights Screenshot](./githubInsights/htmlCssPrototype.png)
+![GitHub Insights Screenshot](./githubInsights/commitInsight.png)
 
 ### Ziele bis zum nächsten Sprint:
 
