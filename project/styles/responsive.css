@@ -65,7 +65,7 @@ body {
 
 .nav-links {
   display: none;
-  width: 100%; /* Nimmt volle Breite ein im Mobile */
+  width: 100%; 
   background-color: var(--primary);
 }
 
@@ -77,7 +77,7 @@ body {
 
 .nav-links-center {
   display: flex;
-  flex-direction: column; /* Mobile: Spaltenlayout */
+  flex-direction: column; 
   gap: 0.5rem;
 }
 
@@ -127,7 +127,7 @@ body {
       width: auto;
       background: transparent;
       justify-content: center;
-      flex-grow: 1; /* Nimmt verfügbaren Platz ein */
+      flex-grow: 1; 
   }
 
   .nav-links-center {
