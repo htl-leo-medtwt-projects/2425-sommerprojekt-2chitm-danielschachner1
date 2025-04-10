@@ -94,7 +94,7 @@
 
 4. **Persistente Buchungsdaten**:
 
-   - Speicherung der Buchungsdaten im LocalStorage (oder später in einer Datenbank).
+   - Speicherung der Buchungsdaten im LocalStorage.
    - Sicherstellen, dass Buchungen auch nach einem Seitenrefresh erhalten bleiben.
 
 5. **Optimierung des Nutzerprofils**:
