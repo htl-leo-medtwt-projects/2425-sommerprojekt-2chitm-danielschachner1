@@ -82,5 +82,32 @@
 
         
     </div>
+    
+
+    <div id="place-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-[100] flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto dark:bg-dark">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modal-place-name" class="text-2xl font-bold dark:text-light"></h2>
+                    <button id="close-modal" class="text-3xl dark:text-light">&times;</button>
+                </div>
+                <img id="modal-place-image" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
+                <div class="flex items-center mb-4">
+                    <span id="modal-place-rating" class="font-bold mr-2 dark:text-light"></span>
+                    <div id="modal-place-stars" class="text-primary"></div>
+                </div>
+                <p id="modal-place-description" class="mb-4 dark:text-light"></p>
+                <div id="modal-place-moods" class="flex flex-wrap gap-2 mb-6"></div>
+                <div class="flex gap-4">
+                    <button id="favorite-btn" class="flex-1 py-2 border-2 border-primary rounded-full dark:border-accent dark:text-accent">
+                        <span id="heart-icon">♡</span> Favorit
+                    </button>
+                    <button id="book-btn" class="flex-1 py-2 bg-primary text-white rounded-full dark:bg-accent">
+                        Jetzt buchen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

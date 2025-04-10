@@ -101,18 +101,93 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Buchung gestartet für:', place.name);
     }
 
-    function getPriceForType(type) {
-        const prices = {
-            'cafe': 5,
-            'library': 3,
-            'coworking': 15,
-            'park': 0
-        };
-        return prices[type] || 10;
-    }
 
-    applyFiltersBtn.addEventListener('click', applyFilters);
-});
+
+
+
+    
+        const placeModal = document.getElementById('place-modal');
+        const closeModal = document.getElementById('close-modal');
+        const favoriteBtn = document.getElementById('favorite-btn');
+        const heartIcon = document.getElementById('heart-icon');
+        let currentPlace = null;
+    
+        function openBookingModal(place) {
+            showPlaceModal(place);
+        }
+        
+        function showPlaceModal(place) {
+            currentPlace = place;
+            document.getElementById('modal-place-name').textContent = place.name;
+            document.getElementById('modal-place-image').src = `../img/${place.image}`;
+            document.getElementById('modal-place-image').alt = place.name;
+            document.getElementById('modal-place-rating').textContent = place.rating;
+            document.getElementById('modal-place-description').textContent = place.description;
+        
+            const starsContainer = document.getElementById('modal-place-stars');
+            starsContainer.innerHTML = '';
+            const fullStars = Math.floor(place.rating);
+            const hasHalfStar = place.rating % 1 >= 0.5;
+        
+            for (let i = 0; i < 5; i++) {
+                const star = document.createElement('span');
+                if (i < fullStars) star.textContent = '★';
+                else if (i === fullStars && hasHalfStar) star.textContent = '½';
+                else star.textContent = '☆';
+                starsContainer.appendChild(star);
+            }
+        
+            const moodsContainer = document.getElementById('modal-place-moods');
+            moodsContainer.innerHTML = '';
+            place.mood.forEach(mood => {
+                const tag = document.createElement('span');
+                tag.className = 'px-3 py-1 bg-secondary rounded-full text-sm dark:bg-accent';
+                tag.textContent = mood;
+                moodsContainer.appendChild(tag);
+            });
+        
+            updateFavoriteIcon();
+            placeModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    
+        function closePlaceModal() {
+            placeModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    
+        function toggleFavorite(placeName) {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const index = favorites.indexOf(placeName);
+            if (index === -1) {
+                favorites.push(placeName);
+            } else {
+                favorites.splice(index, 1);
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+    
+        function updateFavoriteIcon() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const isFavorite = favorites.includes(currentPlace.name);
+            heartIcon.textContent = isFavorite ? '♥' : '♡';
+        }
+    
+        closeModal.addEventListener('click', closePlaceModal);
+        favoriteBtn.addEventListener('click', () => {
+            toggleFavorite(currentPlace.name);
+            updateFavoriteIcon();
+        });
+    
+        placeModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePlaceModal();
+            }
+        });
+    
+    });
+    
+
 
 
 
