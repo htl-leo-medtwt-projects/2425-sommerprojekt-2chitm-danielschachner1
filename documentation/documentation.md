@@ -17,7 +17,7 @@
   - Implementierung der Navigationsleiste mit Links zu Startseite, Orte buchen und Community.
   - Integration des Hero-Bereichs mit Suchleiste und Hintergrundbild.
   - Erstellung des „Top-Bewertete Orte“-Abschnitts.
-  - Hinzufügen einer interaktiven Karte mit Orten (mit **Leaflet.js**).
+  - Verbessern der interaktiven Karte ( **Leaflet.js**).
 
 - **Design**:
   - Nutzung von **TailwindCSS** für ein ansprechendes, responsives Layout.
@@ -94,7 +94,7 @@
 
 4. **Persistente Buchungsdaten**:
 
-   - Speicherung der Buchungsdaten im LocalStorage (oder später in einer Datenbank).  
+   - Speicherung der Buchungsdaten im LocalStorage (oder später in einer Datenbank).
    - Sicherstellen, dass Buchungen auch nach einem Seitenrefresh erhalten bleiben.
 
 5. **Optimierung des Nutzerprofils**:
