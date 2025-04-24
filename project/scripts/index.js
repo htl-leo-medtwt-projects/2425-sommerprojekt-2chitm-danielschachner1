@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-
+    
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('hidden');
-            menuToggle.textContent = navLinks.classList.contains('hidden') ? '☰' : '✕';
+            navLinks.classList.toggle('active');
+            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
     }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });
 
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const darkIcon = document.getElementById('dark-icon');
