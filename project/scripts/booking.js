@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryFilter = document.getElementById('category-filter');
     const moodFilter = document.getElementById('mood-filter');
     const applyFiltersBtn = document.getElementById('apply-filters');
-    const placesList = document.getElementById('places-list');
+    applyFiltersBtn.addEventListener('click', applyFilters);
+        const placesList = document.getElementById('places-list');
 
     fetch('../data/places.json')
         .then(response => response.json())

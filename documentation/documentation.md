@@ -15,7 +15,7 @@
 - **UI/UX-Prototyp**:
 
   - Implementierung der Navigationsleiste mit Links zu Startseite, Orte buchen und Community.
-  - Integration des Hero-Bereichs mit Suchleiste und Hintergrundbild.
+  - Integration des Hero-Bereichs mit Suchleiste und Hintergrundbild.^
   - Erstellung des „Top-Bewertete Orte“-Abschnitts.
   - Verbessern der interaktiven Karte ( **Leaflet.js**).
 
