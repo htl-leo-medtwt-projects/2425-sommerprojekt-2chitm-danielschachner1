@@ -16,6 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+
+    let isLoggedIn = localStorage.getItem('isLoggedIn');
+    console.log(isLoggedIn
+    )
+
+    if(isLoggedIn == 'true') {
+        document.querySelector('.login-btn').textContent = 'Konto';
+        document.querySelector('.login-btn').href = '/project/sites/konto.html';
+
+    }
+
     let placesData = [];
     const categoryFilter = document.getElementById('category-filter');
     const moodFilter = document.getElementById('mood-filter');

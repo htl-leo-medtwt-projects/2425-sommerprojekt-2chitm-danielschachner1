@@ -1,12 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
+    }
+
+    let isLoggedIn = localStorage.getItem('isLoggedIn');
+    console.log(isLoggedIn);
+    if (isLoggedIn == 'true') {
+        document.querySelector('.login-btn').textContent = 'Konto';
+        document.querySelector('.login-btn').href = '/project/sites/konto.html';
     }
 
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -33,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lightIcon.classList.toggle('hidden', isDark);
     });
 
+    // Karten-Initialisierung
     const map = L.map('map', {
         zoomControl: false,
         attributionControl: false
@@ -41,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
     L.control.zoom({ position: 'topright' }).addTo(map);
     L.control.attribution({ position: 'bottomright', prefix: false }).addTo(map);
+
+    let markerGroup = L.featureGroup().addTo(map); // Gruppe für alle Marker
 
     const placeModal = document.getElementById('place-modal');
     const closeModal = document.getElementById('close-modal');
@@ -89,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function closePlaceModal() {
         placeModal.classList.remove('modal-visible');
         placeModal.classList.add('hidden');
-        document.body.style.overflow = ''; 
+        document.body.style.overflow = '';
     }
 
-
+    // Favoriten-Logik
     function toggleFavorite(placeName) {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const index = favorites.indexOf(placeName);
@@ -101,79 +110,125 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }
 
-
     function updateFavoriteIcon() {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const isFavorite = favorites.includes(currentPlace.name);
         heartIcon.textContent = isFavorite ? '♥' : '♡';
     }
 
-
+    // Event-Listener für Modal
     closeModal.addEventListener('click', closePlaceModal);
     favoriteBtn.addEventListener('click', () => {
         toggleFavorite(currentPlace.name);
         updateFavoriteIcon();
     });
 
-    // Klick außerhalb des Modals zum Schließen
     placeModal.addEventListener('click', function (e) {
         if (e.target === this) {
             closePlaceModal();
         }
     });
 
-    // Orte aus einer JSON-Datei laden und auf der Karte anzeigen
+    // Laden der Orte aus der JSON-Datei
     fetch('./data/places.json')
         .then(response => response.json())
         .then(data => {
             const placesContainer = document.getElementById('places-container');
-            const markerGroup = L.featureGroup();
 
-            data.places.forEach(place => {
-                const marker = L.marker([place.lat, place.lng], {
-                    riseOnHover: true
-                }).addTo(map)
-                    .bindPopup(`<b>${place.name}</b><br><small>${getTypeName(place.type)}</small><br>⭐ ${place.rating}`, {
-                        className: 'custom-popup',
-                        autoClose: false,
-                        closeOnClick: false
-                    });
+            // Initialisiere Marker und zeige Top-Bewertete Orte an
+            renderMarkers(data.places);
+            renderPlaces(data.places.slice(0, 4));
 
-                markerGroup.addLayer(marker);
-
-                marker.on('click', function (e) {
-                    map.flyTo(e.latlng, 16, { duration: 0.8 });
-                    setTimeout(() => showPlaceModal(place), 300);
-                });
-            });
-
-            map.fitBounds(markerGroup.getBounds());
-
-            data.places.slice(0, 4).forEach(place => {
-                const placeCard = document.createElement('div');
-                placeCard.className = 'place-card';
-                placeCard.innerHTML = `
-                    <img src="./img/${place.image}" alt="${place.name}" class="place-image">
-                    <div class="place-content mt-2">
-                        <h3 class="text-xl font-semibold">${place.name}</h3>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-sm text-gray-500">${getTypeName(place.type)}</span>
-                            <span class="place-rating">⭐ ${place.rating}</span>
-                        </div>
-                        <button class="book-btn mt-4">Details anzeigen</button>
-                    </div>
-                `;
-                placeCard.querySelector('.book-btn').addEventListener('click', () => {
-                    map.flyTo([place.lat, place.lng], 16, { duration: 0.8 });
-                    setTimeout(() => showPlaceModal(place), 800);
-                });
-                placesContainer.appendChild(placeCard);
-            });
+            // Suchfunktion initialisieren
+            setupSearchFunctionality(data.places);
         })
         .catch(error => {
             console.error('Fehler beim Laden der Orte:', error);
         });
 
+    // Funktion zur Anzeige von Orten
+    function renderPlaces(places) {
+        const placesContainer = document.getElementById('places-container');
+        placesContainer.innerHTML = ''; // Container leeren
+
+        places.forEach(place => {
+            const placeCard = document.createElement('div');
+            placeCard.className = 'place-card';
+            placeCard.innerHTML = `
+                <img src="./img/${place.image}" alt="${place.name}" class="place-image">
+                <div class="place-content mt-2">
+                    <h3 class="text-xl font-semibold">${place.name}</h3>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-sm text-gray-500">${getTypeName(place.type)}</span>
+                        <span class="place-rating">⭐ ${place.rating}</span>
+                    </div>
+                    <button class="book-btn mt-4">Details anzeigen</button>
+                </div>
+            `;
+            placeCard.querySelector('.book-btn').addEventListener('click', () => {
+                map.flyTo([place.lat, place.lng], 16, { duration: 0.8 });
+                setTimeout(() => showPlaceModal(place), 800);
+            });
+            placesContainer.appendChild(placeCard);
+        });
+    }
+
+    // Funktion zur Anzeige von Markern auf der Karte
+    function renderMarkers(places) {
+        markerGroup.clearLayers(); // Entferne alle vorhandenen Marker
+
+        places.forEach(place => {
+            const marker = L.marker([place.lat, place.lng], {
+                riseOnHover: true
+            })
+                .bindPopup(`<b>${place.name}</b><br><small>${getTypeName(place.type)}</small><br>⭐ ${place.rating}`, {
+                    className: 'custom-popup',
+                    autoClose: false,
+                    closeOnClick: false
+                });
+
+            marker.on('click', function (e) {
+                map.flyTo(e.latlng, 16, { duration: 0.8 });
+                setTimeout(() => showPlaceModal(place), 300);
+            });
+
+            markerGroup.addLayer(marker); // Füge den Marker zur Gruppe hinzu
+        });
+
+        map.fitBounds(markerGroup.getBounds()); // Passe die Kartenansicht an
+    }
+
+    // Suchfunktion implementieren
+    function setupSearchFunctionality(places) {
+        const searchInput = document.getElementById('search-input');
+
+        if (!searchInput) {
+            console.error('Fehler: Das Suchfeld mit der ID "search-input" wurde nicht gefunden.');
+            return;
+        }
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.trim().toLowerCase();
+            if (!query) {
+                // Wenn das Suchfeld leer ist, zeige alle Orte
+                renderPlaces(places.slice(0, 4));
+                renderMarkers(places);
+                return;
+            }
+
+            // Orte filtern
+            const filteredPlaces = places.filter(place =>
+                place.name.toLowerCase().includes(query) ||
+                getTypeName(place.type).toLowerCase().includes(query)
+            );
+
+            // Gefilterte Orte anzeigen
+            renderPlaces(filteredPlaces);
+            renderMarkers(filteredPlaces);
+        });
+    }
+
+    // Hilfsfunktion für den Typ-Namen
     function getTypeName(type) {
         const typeNames = {
             'cafe': 'Café',

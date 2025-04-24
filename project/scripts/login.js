@@ -47,6 +47,8 @@ function toggleForms() {
 
 signupForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    localStorage.setItem('isLoggedIn', 'false');
+
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
@@ -99,6 +101,10 @@ loginForm.addEventListener('submit', function(e) {
     showStatus('Anmeldung erfolgreich!');
 
     localStorage.setItem('currentUser', JSON.stringify({ email: email }));
+
+    localStorage.setItem('isLoggedIn', 'true');
+
+    
 
     setTimeout(() => {
         window.location.href = '../index.html';

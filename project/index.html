@@ -29,19 +29,22 @@
 
 <body class="relative">
     <div class="blur-overlay"></div>
-
-    <nav class="navbar relative z-10">
-        <div class="nav-brand">
-            <h1 class="text-3xl font-bold">FindYourSpace</h1>
-            <button class="menu-toggle md:hidden">☰</button>
-        </div>
-        
-        <div class="nav-links">
-            <div class="nav-links-center">
+    <nav class="navbar relative z-10 bg-dark text-light py-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Nav Brand (Links) -->
+            <div class="nav-brand flex items-center gap-4">
+                <h1 class="text-3xl font-bold">FindYourSpace</h1>
+                <button class="menu-toggle md:hidden text-light">☰</button>
+            </div>
+    
+            <!-- Nav Links (Zentriert) -->
+            <div class="nav-links-center flex-grow flex justify-center">
                 <a href="./index.html" class="nav-link">Startseite</a>
                 <a href="./sites/booking.html" class="nav-link">Orte suchen</a>
                 <a href="./sites/favorites.html" class="nav-link">Favoriten</a>
             </div>
+    
+            <!-- Login/Konto (Rechts) -->
             <div class="flex items-center gap-4">
                 <button id="dark-mode-toggle" class="p-2 rounded-full">
                     <span id="dark-icon" class="hidden">🌙</span>
@@ -56,7 +59,7 @@
         <div class="bg-black bg-opacity-70 p-8 rounded-xl shadow-lg">
             <h1 class="text-5xl font-extrabold">FindYourSpace</h1>
             <p class="mt-4 text-xl">Finde deinen perfekten Ort zum Lernen, Arbeiten & Entspannen</p>
-            <input type="text" placeholder="Suche nach Orten..." class="mt-6 px-5 py-3 w-full md:w-96 text-black rounded-full shadow-lg focus:outline-none dark:bg-dark dark:text-light">
+            <input id="search-input" type="text" placeholder="Suche nach Orten..." class="mt-6 px-5 py-3 w-full md:w-96 text-black rounded-full shadow-lg focus:outline-none dark:bg-dark dark:text-light">
         </div>
     </div>
 

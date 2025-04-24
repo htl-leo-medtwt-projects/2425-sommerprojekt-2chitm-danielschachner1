@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
+    let isLoggedIn = localStorage.getItem('isLoggedIn');
+    console.log(isLoggedIn
+    )
+
+    if(isLoggedIn == 'true') {
+        document.querySelector('.login-btn').textContent = 'Konto';
+        document.querySelector('.login-btn').href = '/project/sites/konto.html';
+
+    }
+
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const darkIcon = document.getElementById('dark-icon');
