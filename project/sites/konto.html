@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Konto | FindYourSpace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../scripts/konto.js" defer></script>
+    <link rel="stylesheet" href="../styles/konto.css">
+    
 </head>
 <body>
-    
-    <h1>hallo</h1>
+    <div class="container mx-auto p-8 max-w-2xl bg-white shadow-lg rounded-lg">
+        <div id="welcome-section" class="welcome-message">Willkommen zurück!</div>
+
+        <!-- Aktuelle Buchungen -->
+        <h2 class="text-2xl font-semibold mb-4 text-primary-color">Aktuelle Buchungen</h2>
+        <div id="current-bookings" class="space-y-4">
+            <!-- Hier werden aktuelle Buchungen angezeigt -->
+        </div>
+
+        <!-- Vergangene Buchungen -->
+        <h2 class="text-2xl font-semibold mt-8 mb-4 text-primary-color">Vergangene Buchungen</h2>
+        <div id="past-bookings" class="space-y-4">
+            <!-- Hier werden vergangene Buchungen angezeigt -->
+        </div>
+    </div>
+
+
 </body>
 </html>

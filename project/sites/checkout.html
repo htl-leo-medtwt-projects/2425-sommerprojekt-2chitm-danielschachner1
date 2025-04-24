@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | FindYourSpace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../scripts/checkout.js" defer></script>
+    <link rel="stylesheet" href="../styles/checkout.css">
+   
+</head>
+<body>
+    <div class="container mx-auto p-8 max-w-2xl bg-white shadow-lg rounded-lg">
+        <h1 class="text-4xl font-bold text-center mb-8 text-primary-color">Buchung abschließen</h1>
+
+        <!-- Ort und Buchungs-ID -->
+        <div id="checkout-info" class="p-6 rounded-lg shadow-md mb-6">
+            <p class="text-xl font-semibold mb-2">Ort: <span id="place-name" class="text-primary-color"></span></p>
+            <p class="text-gray-600">Buchungs-ID: <span id="booking-id"></span></p>
+        </div>
+
+        <!-- Formular für Datum und Uhrzeit -->
+        <form id="booking-form" class="space-y-6">
+            <div>
+                <label for="booking-date" class="block text-sm font-medium text-gray-700">Datum auswählen</label>
+                <input type="date" id="booking-date" name="booking-date" class="input-style w-full mt-2" required>
+            </div>
+            <div>
+                <label for="booking-time" class="block text-sm font-medium text-gray-700">Uhrzeit auswählen</label>
+                <input type="time" id="booking-time" name="booking-time" class="input-style w-full mt-2" required>
+            </div>
+            <button id="complete-booking" type="submit" class="button-style w-full">
+                Buchung abschließen
+            </button>
+        </form>
+
+        <!-- Erfolgsmeldung -->
+        <div id="success-message" class="hidden mt-6 p-6 rounded-lg success-message">
+            <p class="font-semibold text-lg"> Buchung erfolgreich abgeschlossen!</p>
+            <p class="mt-2">Sie werden in <span id="countdown" class="font-bold">3</span> Sekunden weitergeleitet.</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>

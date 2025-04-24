@@ -125,7 +125,38 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentPlace = null;
     
         function openBookingModal(place) {
+            currentPlace = place;
+        
+            // Zeige das Modal mit den Ortsdetails an
             showPlaceModal(place);
+        
+            // Füge einen EventListener zum "Jetzt buchen"-Button hinzu
+            document.getElementById('book-btn').addEventListener('click', () => {
+                redirectToCheckout(currentPlace);
+            });
+        }
+        
+        function redirectToCheckout(place) {
+            // Simuliere eine Weiterleitung zur externen Checkout-Seite
+            const checkoutUrl = `../sites/checkout.html?place=${encodeURIComponent(place.name)}&id=${generateUniqueId()}`;
+            window.location.href = checkoutUrl;
+        }
+        
+        function generateUniqueId() {
+            // Generiere eine eindeutige ID für die Buchung
+            return 'booking_' + Math.random().toString(36).substr(2, 9);
+        }
+        
+        // Funktion, die nach dem Checkout aufgerufen wird
+        function saveBookingToLocalStorage(placeName, bookingId) {
+            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            const newBooking = {
+                id: bookingId,
+                place: placeName,
+                date: new Date().toISOString()
+            };
+            bookings.push(newBooking);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
         }
         
         function showPlaceModal(place) {

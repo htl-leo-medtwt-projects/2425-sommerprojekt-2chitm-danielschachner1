@@ -1,0 +1,47 @@
+/* Farben */
+:root {
+    --primary-color: #6D4C3D; /* Cafébraun */
+    --secondary-color: #F5F5F5; /* Hellgrau */
+    --text-color: #333333; /* Dunkelgrau */
+    --accent-color: #D2B48C; /* Hellbraun */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.input-style {
+    border: 2px solid var(--primary-color);
+    background-color: white;
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.input-style:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(109, 76, 61, 0.3);
+}
+
+.button-style {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button-style:hover {
+    background-color: var(--accent-color);
+}
+
+.success-message {
+    background-color: #E8F5E9; /* Hellgrün */
+    color: #2E7D32; /* Dunkelgrün */
+    border-left: 8px solid #388E3C; /* Akzentgrün */
+}
