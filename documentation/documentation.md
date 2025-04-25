@@ -108,4 +108,57 @@
 
 ---
 
+### Neuerungen seit dem letzten Sprint:
+
+- **Checkout-Seite**:
+
+  - Entwicklung einer übersichtlichen **Checkout-Seite**, auf der Nutzer ihre ausgewählten Orte samt Datum und Uhrzeit überprüfen können.
+  - Integration einer **Buchungsübersicht** mit dynamischer Anzeige der Buchungsdaten.
+  - Hinzufügen eines **Bestätigungsdialogs**, der nach dem Absenden die Buchung visuell bestätigt.
+  - Responsives Design mit Fokus auf Benutzerfreundlichkeit – insbesondere auf mobilen Geräten.
+
+- **Konto verwalten / Buchungen stornieren und bearbeiten**:
+
+  - Erstellung eines **„Mein Konto“-Bereichs**, zugänglich nur für eingeloggte Nutzer.
+  - Übersicht über vergangene und aktuelle Buchungen.
+  - Implementierung der **Stornierungsfunktion**: Nutzer können einzelne Buchungen mit einem Klick stornieren, die Daten werden aus dem LocalStorage entfernt.
+  - Implementierung einer **Bearbeiten-Funktion**, um z. B. das Datum oder die Uhrzeit einer bestehenden Buchung zu ändern.
+  - UI-Feedback mit Statusmeldungen
+
+- **Datenspeicherung**:
+  - Sämtliche Buchungs- und Profildaten werden vollständig über den **LocalStorage** verwaltet und gespeichert.
+  - Persistente Datenspeicherung sorgt dafür, dass Daten auch nach einem Seiten-Reload erhalten bleiben.
+
+---
+
+### Ziele bis zum nächsten Sprint:
+
+1. **Design-Optimierungen**
+
+   - Feinjustierung des responsiven Layouts auf Mobil- und Tablet-Ansicht.
+   - Konsistente Gestaltung aller UI-Komponenten (z. B. Buttons, Modals, Input-Felder).
+   - Verbesserung der Benutzerführung auf der Checkout- und Konto-Seite.
+
+2. **Passwort ändern-Funktion**
+
+   - Hinzufügen einer Funktion im Benutzerprofil, mit der angemeldete Nutzer ihr Passwort ändern können.
+   - Validierung der neuen Eingabe (z. B. Mindestlänge, Passwort-Wiederholung).
+   - Speicherung der aktualisierten Daten im LocalStorage unter dem jeweiligen Nutzerprofil.
+
+3. **E-Mail ändern-Funktion**
+
+   - Ermöglichen der Änderung der hinterlegten E-Mail-Adresse im Konto-Bereich.
+   - Aktualisierung der Login-Daten und persistente Speicherung.
+
+4. **Verbesserung Nutzerverwaltung im LocalStorage**
+   - Sicherstellen, dass Änderungen wie Passwort oder E-Mail direkt übernommen und gespeichert werden.
+   - Debugging: Entfernen alter/verwaister Datensätze im LocalStorage.
+
+### Screenshot der GitHub-Insights Statisktik:
+
+![Github Insight Screenshot](./githubInsights/codeFrequency2504.png)
+![Github Insight Screenshot](./githubInsights/commitHistory2504.png)
+
+---
+
 **Ende der Sprint-Dokumentation**
