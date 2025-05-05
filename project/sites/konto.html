@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konto | FindYourSpace</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../scripts/konto.js" defer></script>
-    <link rel="stylesheet" href="../styles/konto.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konto | FindYourSpace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../scripts/konto.js" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6D4C3D',
+            secondary: '#F5F5F5',
+            accent: '#D2B48C',
+            rose: '#FECACA',
+            mint: '#D1FAE5',
+            lilac: '#E0E7FF',
+            dark: '#1F2937',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .booking-card:hover {
+      box-shadow: 0 0 10px rgba(109, 76, 61, 0.2);
+    }
+  </style>
 </head>
-<body>
-    <div class="container mx-auto p-8 max-w-2xl bg-white shadow-lg rounded-lg">
-        <div id="welcome-section" class="welcome-message">Willkommen zurück!</div>
+<body class="flex min-h-screen bg-secondary font-sans text-dark">
 
-        <!-- Aktuelle Buchungen -->
-        <h2 class="text-2xl font-semibold mb-4 text-primary-color">Aktuelle Buchungen</h2>
-        <div id="current-bookings" class="space-y-4">
-            <!-- Hier werden aktuelle Buchungen angezeigt -->
-        </div>
+  <aside class="w-72 bg-white shadow-lg p-6 border-r border-gray-200">
+    <h2 class="text-2xl font-bold text-primary mb-4">Konto-Einstellungen</h2>
+    <form id="user-settings-form" class="space-y-4">
+      <div>
+        <label for="email" class="block text-sm font-medium">E-Mail</label>
+        <input type="email" id="email" class="w-full mt-1 p-2 border rounded" required />
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium">Passwort</label>
+        <input type="password" id="password" class="w-full mt-1 p-2 border rounded" required />
+      </div>
+      <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-accent transition">Speichern</button>
+      <p id="save-status" class="text-green-600 text-sm mt-2 hidden">Gespeichert!</p>
+    </form>
+  </aside>
 
-        <!-- Vergangene Buchungen -->
-        <h2 class="text-2xl font-semibold mt-8 mb-4 text-primary-color">Vergangene Buchungen</h2>
-        <div id="past-bookings" class="space-y-4">
-            <!-- Hier werden vergangene Buchungen angezeigt -->
-        </div>
+  <main class="flex-1 p-8">
+    <div class="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <div id="welcome-section" class="text-center text-3xl font-extrabold text-primary mb-6">Willkommen zurück!</div>
+
+      <h2 class="text-2xl font-semibold mb-4 text-primary">Aktuelle Buchungen</h2>
+      <div id="current-bookings" class="space-y-4"></div>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4 text-primary">Vergangene Buchungen</h2>
+      <div id="past-bookings" class="space-y-4"></div>
     </div>
+  </main>
 
-
+ 
 </body>
 </html>
