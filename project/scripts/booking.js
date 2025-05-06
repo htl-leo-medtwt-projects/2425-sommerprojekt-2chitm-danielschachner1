@@ -2,21 +2,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
-    if (menuToggle && navLinks) {
+    const navLinksCenter = document.querySelector('.nav-links-center');
+
+    if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+            
+            if (navLinksCenter) {
+                navLinksCenter.classList.toggle('active');
+            }
+            
+            menuToggle.textContent = (navLinks && navLinks.classList.contains('active')) || 
+                                    (navLinksCenter && navLinksCenter.classList.contains('active')) 
+                                    ? '✕' : '☰';
         });
     }
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-            link.classList.add('active');
-        }
-    });
-
-
     let isLoggedIn = localStorage.getItem('isLoggedIn');
     console.log(isLoggedIn
     )

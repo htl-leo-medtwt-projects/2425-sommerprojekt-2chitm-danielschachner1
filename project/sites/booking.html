@@ -26,27 +26,28 @@
 </head>
 
 <body class="bg-light">
-    <nav class="navbar relative z-10">
-        <div class="nav-brand">
-            <h1 class="text-3xl font-bold">FindYourSpace</h1>
-            <button class="menu-toggle md:hidden">☰</button>
+
+<nav class="navbar relative z-10">
+    <div class="nav-brand">
+        <h1 class="text-3xl font-bold">FindYourSpace</h1>
+        <button class="menu-toggle md:hidden">☰</button>
+    </div>
+    
+    <div class="nav-links hidden md:flex">
+        <div class="nav-links-center">
+            <a href="../index.html" class="nav-link">Startseite</a>
+            <a href="../sites/booking.html" class="nav-link">Orte suchen</a>
+            <a href="favorites.html" class="nav-link">Favoriten</a>
         </div>
-        
-        <div class="nav-links">
-            <div class="nav-links-center">
-                <a href="../index.html" class="nav-link">Startseite</a>
-                <a href="../sites/booking.html" class="nav-link">Orte suchen</a>
-                <a href="favorites.html" class="nav-link">Favoriten</a>
-            </div>
-            <div class="flex items-center gap-4">
-                <button id="dark-mode-toggle" class="p-2 rounded-full">
-                    <span id="dark-icon" class="hidden">🌙</span>
-                    <span id="light-icon">☀️</span>
-                </button>
-                <a href="./login.html" class="login-btn">Login</a>
-            </div>
+        <div class="flex items-center gap-4">
+            <button id="dark-mode-toggle" class="p-2 rounded-full">
+                <span id="dark-icon" class="hidden">🌙</span>
+                <span id="light-icon">☀️</span>
+            </button>
+            <a href="./login.html" class="login-btn">Login</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <div class="container mx-auto p-8">
         <h1 class="text-4xl font-bold mb-8">Verfügbare Orte</h1>
