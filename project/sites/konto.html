@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Konto | FindYourSpace</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="../scripts/konto.js" defer></script>
   <link rel="stylesheet" href="../styles/konto.css">
   <link rel="stylesheet" href="../styles/responsive.css">
@@ -20,47 +21,310 @@
             mint: '#D1FAE5',
             lilac: '#E0E7FF',
             dark: '#1F2937',
+            cream: '#F8F3E6',
+            mocha: '#8B5A2B',
+            latte: '#E6D2B5',
           }
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
         }
       }
     }
   </script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      background-color: #F8F3E6;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .sidebar-menu-item {
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      color: #6D4C3D;
+      font-weight: 500;
+    }
+    
+    .sidebar-menu-item:hover {
+      background-color: #E6D2B5;
+    }
+    
+    .sidebar-menu-item.active {
+      background-color: #6D4C3D;
+      color: white;
+    }
+    
+    .tab-panel {
+      display: none;
+    }
+    
+    .tab-panel.active {
+      display: block;
+    }
+    
+    .booking-card {
+      border-radius: 1rem;
+      border-left: 4px solid #6D4C3D;
+      transition: all 0.3s ease;
+    }
+    
     .booking-card:hover {
-      box-shadow: 0 0 10px rgba(109, 76, 61, 0.2);
+      box-shadow: 0 4px 12px rgba(109, 76, 61, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .button-style {
+      transition: all 0.2s ease;
+    }
+    
+    .button-style:hover {
+      transform: translateY(-1px);
+    }
+    
+    /* Mobile Sidebar Toggle */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 40;
+        width: 85%;
+        max-width: 300px;
+      }
+      
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 30;
+      }
+      
+      .overlay.active {
+        display: block;
+      }
     }
   </style>
 </head>
-<body class="flex min-h-screen bg-secondary font-sans text-dark">
+<body class="min-h-screen bg-cream font-sans text-dark">
+  <header class="md:hidden fixed top-0 left-0 right-0 bg-white shadow-md p-4 flex justify-between items-center z-20">
+    <button class="sidebar-toggle" id="sidebar-toggle">
+      <i class="fas fa-bars text-primary text-xl"></i>
+    </button>
+    <h1 class="text-lg font-bold text-primary">FindYourSpace</h1>
+    <a href="../index.html" class="text-primary">
+      <i class="fas fa-home text-xl"></i>
+    </a>
+  </header>
 
-  <aside class="w-72 bg-white shadow-lg p-6 border-r border-gray-200">
-    <h2 class="text-2xl font-bold text-primary mb-4">Konto-Einstellungen</h2>
-    <form id="user-settings-form" class="space-y-4">
-      <div>
-        <label for="email" class="block text-sm font-medium">E-Mail</label>
-        <input type="email" id="email" class="w-full mt-1 p-2 border rounded" required />
-      </div>
-      <div>
-        <label for="password" class="block text-sm font-medium">Passwort</label>
-        <input type="password" id="password" class="w-full mt-1 p-2 border rounded" required />
-      </div>
-      <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-accent transition">Speichern</button>
-      <p id="save-status" class="text-green-600 text-sm mt-2 hidden">Gespeichert!</p>
-    </form>
+  <div class="overlay" id="sidebar-overlay"></div>
+
+  <aside class="sidebar w-full md:w-64 lg:w-72 bg-white shadow-lg p-0 md:p-0 border-r border-latte fixed md:sticky top-0 h-screen z-40">
+    <div class="p-4 border-b border-latte flex justify-between items-center">
+      <h2 class="text-xl font-bold text-primary">Mein Konto</h2>
+      <button class="md:hidden close-sidebar" id="close-sidebar">
+        <i class="fas fa-times text-primary text-lg"></i>
+      </button>
+    </div>
+    
+    <div class="p-4 border-b border-latte bg-latte bg-opacity-30">
+      <div id="welcome-section" class="text-primary font-medium">Willkommen zurück!</div>
+    </div>
+    
+    <nav class="p-4">
+      <ul class="space-y-2">
+        <li>
+          <a href="../index.html" class="sidebar-menu-item">
+            <i class="fas fa-home"></i>
+            <span>Startseite</span>
+          </a>
+        </li>
+        <li>
+          <button class="sidebar-menu-item active w-full text-left" data-tab="bookings">
+            <i class="fas fa-calendar-check"></i>
+            <span>Meine Buchungen</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-menu-item w-full text-left" data-tab="account">
+            <i class="fas fa-user-circle"></i>
+            <span>Kontoeinstellungen</span>
+          </button>
+        </li>
+        <li>
+          <button class="sidebar-menu-item w-full text-left" data-tab="help">
+            <i class="fas fa-question-circle"></i>
+            <span>Hilfe</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    
+    <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-latte">
+      <button class="sidebar-menu-item w-full text-left text-rose-500">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Abmelden</span>
+      </button>
+    </div>
   </aside>
 
-  <main class="flex-1 p-8">
-    <div class="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-      <div id="welcome-section" class="text-center text-3xl font-extrabold text-primary mb-6">Willkommen zurück!</div>
+  <!-- Main Content -->
+  <main class="flex-1 p-4 md:p-6 lg:p-8 md:ml-64 lg:ml-72 mt-16 md:mt-0">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Bookings Tab -->
+      <div id="bookings-tab" class="tab-panel active">
+        <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+          <h2 class="text-2xl font-semibold mb-6 text-primary">Meine Buchungen</h2>
+          
+          <h3 class="text-lg font-medium mb-4 text-primary flex items-center gap-2">
+            <i class="fas fa-calendar text-accent"></i> Aktuelle Buchungen
+          </h3>
+          <div id="current-bookings" class="space-y-4"></div>
 
-      <h2 class="text-2xl font-semibold mb-4 text-primary">Aktuelle Buchungen</h2>
-      <div id="current-bookings" class="space-y-4"></div>
-
-      <h2 class="text-2xl font-semibold mt-8 mb-4 text-primary">Vergangene Buchungen</h2>
-      <div id="past-bookings" class="space-y-4"></div>
+          <h3 class="text-lg font-medium mt-8 mb-4 text-primary flex items-center gap-2">
+            <i class="fas fa-history text-accent"></i> Vergangene Buchungen
+          </h3>
+          <div id="past-bookings" class="space-y-4"></div>
+        </div>
+      </div>
+      
+      <!-- Account Settings Tab -->
+      <div id="account-tab" class="tab-panel">
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-2xl font-semibold mb-6 text-primary">Kontoeinstellungen</h2>
+          
+          <form id="user-settings-form" class="space-y-5">
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-Mail</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fas fa-envelope text-gray-400"></i>
+                </div>
+                <input type="email" id="email" class="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent" required />
+              </div>
+            </div>
+            
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Passwort</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fas fa-lock text-gray-400"></i>
+                </div>
+                <input type="password" id="password" class="pl-10 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent" required />
+              </div>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-accent transition font-medium flex items-center justify-center gap-2">
+              <i class="fas fa-save"></i> Änderungen speichern
+            </button>
+          </form>
+          
+          <div id="feedback-container" class="mt-4"></div>
+        </div>
+      </div>
+      
+      <!-- Help Tab -->
+      <div id="help-tab" class="tab-panel">
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-2xl font-semibold mb-6 text-primary">Hilfe & Support</h2>
+          
+          <div class="space-y-6">
+            <div class="bg-latte bg-opacity-30 p-4 rounded-lg">
+              <h3 class="font-medium text-lg mb-2 text-primary">Wie kann ich eine Buchung ändern?</h3>
+              <p class="text-gray-700">Um eine bestehende Buchung zu ändern, gehen Sie zu "Meine Buchungen", finden Sie die gewünschte Buchung und klicken Sie auf "Bearbeiten". Sie können dann Datum und Uhrzeit anpassen.</p>
+            </div>
+            
+            <div class="bg-latte bg-opacity-30 p-4 rounded-lg">
+              <h3 class="font-medium text-lg mb-2 text-primary">Stornierungsrichtlinien</h3>
+              <p class="text-gray-700">Buchungen können bis zu 24 Stunden vor dem gebuchten Termin kostenlos storniert werden. Für spätere Stornierungen können Gebühren anfallen.</p>
+            </div>
+            
+            <div class="bg-latte bg-opacity-30 p-4 rounded-lg">
+              <h3 class="font-medium text-lg mb-2 text-primary">Kontakt</h3>
+              <p class="text-gray-700">Bei weiteren Fragen erreichen Sie uns unter:</p>
+              <p class="mt-2">
+                <i class="fas fa-envelope text-primary mr-2"></i> support@findyourspace.de<br>
+                <i class="fas fa-phone text-primary mr-2"></i> +49 123 456789
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </main>
 
- 
+  <script>
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+    
+    function closeSidebarFunc() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    if (closeSidebar) {
+      closeSidebar.addEventListener('click', closeSidebarFunc);
+    }
+    
+    if (overlay) {
+      overlay.addEventListener('click', closeSidebarFunc);
+    }
+    
+    const tabButtons = document.querySelectorAll('[data-tab]');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabTarget = button.getAttribute('data-tab');
+        
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+        document.getElementById(`${tabTarget}-tab`).classList.add('active');
+        
+        if (window.innerWidth < 768) {
+          closeSidebarFunc();
+        }
+      });
+    });
+    
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        closeSidebarFunc();
+      }
+    });
+    
+    window.closeSidebarFunc = closeSidebarFunc;
+  </script>
 </body>
 </html>
