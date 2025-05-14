@@ -159,7 +159,6 @@
 ![Github Insight Screenshot](./githubInsights/codeFrequency2504.png)
 ![Github Insight Screenshot](./githubInsights/commitHistory2504.png)
 
-Link zum Github-Repo: [GitHub-Repo](https://github.com/htl-leo-medtwt-projects/2425-sommerprojekt-2chitm-danielschachner1.git)
 
 ---
 
@@ -188,7 +187,7 @@ Link zum Github-Repo: [GitHub-Repo](https://github.com/htl-leo-medtwt-projects/2
 
 ---
 
-### Ziele bis zum nächsten Sprint:
+### Ziele bis zum nächsten Sprint (22.05.2025):
 
 1. **Bugfixing (nur Desktop-Version)**
 
