@@ -159,6 +159,63 @@
 ![Github Insight Screenshot](./githubInsights/codeFrequency2504.png)
 ![Github Insight Screenshot](./githubInsights/commitHistory2504.png)
 
+Link zum Github-Repo: [GitHub-Repo](https://github.com/htl-leo-medtwt-projects/2425-sommerprojekt-2chitm-danielschachner1.git)
+
 ---
+
+### Neuerungen seit dem letzten Sprint:
+
+- **Design-Optimierungen**:
+
+  - Feinabstimmung des responsiven Layouts für mobile und Tablet-Geräte abgeschlossen.
+  - Vereinheitlichung des UI-Designs: Buttons, Modals und Input-Felder haben jetzt ein konsistentes visuelles Erscheinungsbild.
+  - Verbesserung der Benutzerführung auf der Checkout- und Konto-Seite, inklusive klarer Navigation und Benutzerhinweisen.
+
+- **Passwort ändern-Funktion**:
+
+  - Nutzer können nun ihr Passwort im Profilbereich ändern.
+  - Eingabevalidierung implementiert (nicht gleiches PW wieder).
+  - Persistente Speicherung im LocalStorage sichergestellt.
+
+- **E-Mail ändern-Funktion**:
+
+  - Nutzer können ihre E-Mail-Adresse im Profilbereich ändern.
+  - Automatische Anpassung der Login-Daten im LocalStorage.
+
+- **Optimierte Nutzerverwaltung im LocalStorage**:
+  - Änderungen (z. B. Passwort, E-Mail) werden direkt übernommen und gespeichert.
+  - Alte/verwaiste Datensätze werden beim Login und bei Änderungen automatisch bereinigt.
+
+---
+
+### Ziele bis zum nächsten Sprint:
+
+1. **Bugfixing (nur Desktop-Version)**
+
+   - Identifikation und Behebung kleinerer UI/UX-Bugs, speziell für die Desktop-Version (z. B. Darstellungsfehler bei bestimmten Bildschirmgrößen, fehlerhafte Validierung).
+   - Überprüfung der LocalStorage-Datenstruktur auf potenzielle Inkonsistenzen.
+   - Testen der Bearbeitungs- und Stornierungsfunktionen in Sonderfällen (z. B. mehrfach gespeicherte Buchungen).
+
+2. **Designoptimierungen**
+
+   - Feinschliff der Animationen (z. B. Übergänge, Hover-Effekte) für eine noch ansprechendere Benutzererfahrung.
+   - Verbesserung der Kontraste für eine bessere Lesbarkeit und visuelle Klarheit.
+   - Optimierung des Dark Modes, um Farbkontraste und -harmonien zu verbessern.
+
+3. **Neue Funktion auf der Buchungsseite**
+
+   - Hinzufügen einer **Zeitauswahl** für Buchungen:
+     - Nutzer können nun einen Zeitraum für ihre Buchung auswählen (z. B. von "X bis Y").
+
+---
+
+### Screenshot der GitHub-Insights Statistik:
+
+![Github Insight Screenshot](./githubInsights/codeFrequency0705.png)  
+![Github Insight Screenshot](./githubInsights/commitHistory0705.png)
+
+---
+
+**Ende der Sprint-Dokumentation**
 
 **Ende der Sprint-Dokumentation**
