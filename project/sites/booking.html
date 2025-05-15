@@ -27,27 +27,29 @@
 
 <body class="bg-light">
 
-<nav class="navbar relative z-10">
-    <div class="nav-brand">
-        <h1 class="text-3xl font-bold">FindYourSpace</h1>
-        <button class="menu-toggle md:hidden">☰</button>
-    </div>
-    
-    <div class="nav-links hidden md:flex">
-        <div class="nav-links-center">
-            <a href="../index.html" class="nav-link">Startseite</a>
-            <a href="../sites/booking.html" class="nav-link">Orte</a>
-            <a href="favorites.html" class="nav-link">Favoriten</a>
+<nav class="navbar relative z-10 bg-primary text-white py-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 px-4">
+        <div class="nav-brand flex items-center justify-between w-full md:w-auto">
+            <h1 class="text-4xl font-bold text-white">FindYourSpace</h1>
+            <button class="menu-toggle md:hidden text-3xl text-white">☰</button>
         </div>
-        <div class="flex items-center gap-4">
-            <button id="dark-mode-toggle" class="p-2 rounded-full">
+
+        <div class="nav-links w-full md:flex md:justify-center md:items-center gap-8 text-lg md:text-xl font-medium hidden flex-col md:flex-row">
+            <a href="../index.html" class="nav-link hover:text-accent transition-colors">Startseite</a>
+            <a href="#" class="nav-link hover:text-accent transition-colors">Orte</a>
+            <a href="./favorites.html" class="nav-link hover:text-accent transition-colors">Favoriten</a>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <button id="dark-mode-toggle" class="p-2 rounded-full text-2xl">
                 <span id="dark-icon" class="hidden">🌙</span>
                 <span id="light-icon">☀️</span>
             </button>
-            <a href="./login.html" class="login-btn">Login</a>
+            <a href="./login.html" class="login-btn bg-accent text-dark font-semibold px-4 py-2 rounded-lg hover:bg-accent-dark transition">Login</a>
         </div>
     </div>
 </nav>
+
 
     <div class="container mx-auto p-8">
         <h1 class="text-4xl font-bold mb-8">Verfügbare Orte</h1>

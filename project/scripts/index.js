@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
         lightIcon.classList.toggle('hidden', isDark);
     });
 
-    // Karten-Initialisierung
     const map = L.map('map', {
         zoomControl: false,
         attributionControl: false
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     L.control.zoom({ position: 'topright' }).addTo(map);
     L.control.attribution({ position: 'bottomright', prefix: false }).addTo(map);
 
-    let markerGroup = L.featureGroup().addTo(map); // Gruppe für alle Marker
+    let markerGroup = L.featureGroup().addTo(map); 
 
     const placeModal = document.getElementById('place-modal');
     const closeModal = document.getElementById('close-modal');
@@ -73,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const heartIcon = document.getElementById('heart-icon');
     let currentPlace = null;
 
-    // Modal anzeigen
     function showPlaceModal(place) {
         currentPlace = place;
         document.getElementById('modal-place-name').textContent = place.name;
@@ -110,14 +108,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = 'hidden';
     }
 
-    // Modal schließen
     function closePlaceModal() {
         placeModal.classList.remove('modal-visible');
         placeModal.classList.add('hidden');
         document.body.style.overflow = '';
     }
 
-    // Favoriten-Logik
     function toggleFavorite(placeName) {
         const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const index = favorites.indexOf(placeName);
@@ -132,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
         heartIcon.textContent = isFavorite ? '♥' : '♡';
     }
 
-    // Event-Listener für Modal
     closeModal.addEventListener('click', closePlaceModal);
     favoriteBtn.addEventListener('click', () => {
         toggleFavorite(currentPlace.name);
@@ -145,27 +140,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Laden der Orte aus der JSON-Datei
     fetch('./data/places.json')
         .then(response => response.json())
         .then(data => {
             const placesContainer = document.getElementById('places-container');
 
-            // Initialisiere Marker und zeige Top-Bewertete Orte an
             renderMarkers(data.places);
             renderPlaces(data.places.slice(0, 4));
 
-            // Suchfunktion initialisieren
             setupSearchFunctionality(data.places);
         })
         .catch(error => {
             console.error('Fehler beim Laden der Orte:', error);
         });
 
-    // Funktion zur Anzeige von Orten
     function renderPlaces(places) {
         const placesContainer = document.getElementById('places-container');
-        placesContainer.innerHTML = ''; // Container leeren
+        placesContainer.innerHTML = '';   
 
         places.forEach(place => {
             const placeCard = document.createElement('div');
@@ -189,9 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Funktion zur Anzeige von Markern auf der Karte
     function renderMarkers(places) {
-        markerGroup.clearLayers(); // Entferne alle vorhandenen Marker
+        markerGroup.clearLayers(); 
 
         places.forEach(place => {
             const marker = L.marker([place.lat, place.lng], {
@@ -208,13 +198,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(() => showPlaceModal(place), 300);
             });
 
-            markerGroup.addLayer(marker); // Füge den Marker zur Gruppe hinzu
+            markerGroup.addLayer(marker); 
         });
 
-        map.fitBounds(markerGroup.getBounds()); // Passe die Kartenansicht an
+        map.fitBounds(markerGroup.getBounds()); 
     }
 
-    // Suchfunktion implementieren
     function setupSearchFunctionality(places) {
         const searchInput = document.getElementById('search-input');
 
@@ -226,25 +215,21 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.addEventListener('input', function () {
             const query = searchInput.value.trim().toLowerCase();
             if (!query) {
-                // Wenn das Suchfeld leer ist, zeige alle Orte
                 renderPlaces(places.slice(0, 4));
                 renderMarkers(places);
                 return;
             }
 
-            // Orte filtern
             const filteredPlaces = places.filter(place =>
                 place.name.toLowerCase().includes(query) ||
                 getTypeName(place.type).toLowerCase().includes(query)
             );
 
-            // Gefilterte Orte anzeigen
             renderPlaces(filteredPlaces);
             renderMarkers(filteredPlaces);
         });
     }
 
-    // Hilfsfunktion für den Typ-Namen
     function getTypeName(type) {
         const typeNames = {
             'cafe': 'Café',

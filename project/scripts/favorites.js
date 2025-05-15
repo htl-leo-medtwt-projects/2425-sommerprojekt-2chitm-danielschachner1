@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
 
-    // Dark Mode Toggle
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const darkIcon = document.getElementById('dark-icon');
     const lightIcon = document.getElementById('light-icon');
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Modal Funktionen
     const placeModal = document.getElementById('place-modal');
     const closeModal = document.getElementById('close-modal');
     const favoriteBtn = document.getElementById('favorite-btn');

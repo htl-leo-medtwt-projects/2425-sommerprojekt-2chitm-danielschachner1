@@ -20,22 +20,26 @@
             <p class="text-gray-600">Buchungs-ID: <span id="booking-id"></span></p>
         </div>
 
-        <!-- Formular für Datum und Uhrzeit -->
-        <form id="booking-form" class="space-y-6">
-            <div>
-                <label for="booking-date" class="block text-sm font-medium text-gray-700">Datum auswählen</label>
-                <input type="date" id="booking-date" name="booking-date" class="input-style w-full mt-2" required>
-            </div>
-            <div>
-                <label for="booking-time" class="block text-sm font-medium text-gray-700">Uhrzeit auswählen</label>
-                <input type="time" id="booking-time" name="booking-time" class="input-style w-full mt-2" required>
-            </div>
-            <button id="complete-booking" type="submit" class="button-style w-full">
-                Buchung abschließen
-            </button>
-        </form>
 
-        <!-- Erfolgsmeldung -->
+        <form id="booking-form" class="space-y-6">
+    <div>
+        <label for="booking-date" class="block text-sm font-medium text-gray-700">Datum auswählen</label>
+        <input type="date" id="booking-date" name="booking-date" class="input-style w-full mt-2" required>
+    </div>
+    <div>
+        <label for="booking-time-from" class="block text-sm font-medium text-gray-700">Uhrzeit von</label>
+        <input type="time" id="booking-time-from" name="booking-time-from" class="input-style w-full mt-2" required>
+    </div>
+    <div>
+        <label for="booking-time-to" class="block text-sm font-medium text-gray-700">Uhrzeit bis</label>
+        <input type="time" id="booking-time-to" name="booking-time-to" class="input-style w-full mt-2" required>
+    </div>
+    <button id="complete-booking" type="submit" class="button-style w-full">
+        Buchung abschließen
+    </button>
+</form>
+
+
         <div id="success-message" class="hidden mt-6 p-6 rounded-lg success-message">
             <p class="font-semibold text-lg"> Buchung erfolgreich abgeschlossen!</p>
             <p class="mt-2">Sie werden in <span id="countdown" class="font-bold">3</span> Sekunden weitergeleitet.</p>
