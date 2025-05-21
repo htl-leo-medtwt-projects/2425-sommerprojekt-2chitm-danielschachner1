@@ -81,7 +81,8 @@ body {
 
 .nav-link:hover {
     background-color: #E2B4A0;
-    color: #4A3F35;
+    color: white;
+    
 }
 
 .dropdown {
@@ -199,7 +200,7 @@ body {
 
 .dark .nav-link:hover {
     background-color: #6D4C3D;
-    color: #F8F1E9;
+    color: white;
 }
 
 .nav-brand {
