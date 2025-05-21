@@ -159,7 +159,6 @@
 ![Github Insight Screenshot](./githubInsights/codeFrequency2504.png)
 ![Github Insight Screenshot](./githubInsights/commitHistory2504.png)
 
-
 ---
 
 ### Neuerungen seit dem letzten Sprint:
@@ -192,12 +191,10 @@
 1. **Bugfixing (nur Desktop-Version)**
 
    - Identifikation und Behebung kleinerer UI/UX-Bugs, speziell für die Desktop-Version (z. B. Darstellungsfehler bei bestimmten Bildschirmgrößen, fehlerhafte Validierung).
-   - Überprüfung der LocalStorage-Datenstruktur auf potenzielle Inkonsistenzen.
    - Testen der Bearbeitungs- und Stornierungsfunktionen in Sonderfällen (z. B. mehrfach gespeicherte Buchungen).
 
 2. **Designoptimierungen**
 
-   - Feinschliff der Animationen (z. B. Übergänge, Hover-Effekte) für eine noch ansprechendere Benutzererfahrung.
    - Verbesserung der Kontraste für eine bessere Lesbarkeit und visuelle Klarheit.
    - Optimierung des Dark Modes, um Farbkontraste und -harmonien zu verbessern.
 
@@ -215,6 +212,40 @@
 
 ---
 
-**Ende der Sprint-Dokumentation**
+### Neuerungen seit dem letzten Sprint:
+
+- **Bugfixing (Desktop-Version)**:
+
+  - Behebung kleinerer UI/UX-Bugs auf der Desktop-Version (z. B. Layout-Probleme bei größeren Bildschirmen, nicht reagierende Buttons).
+
+- **Designoptimierungen**:
+
+  - Verbesserung der Farbkontraste für eine bessere Lesbarkeit, insbesondere im Dark Mode.
+  - Verfeinerung der Farbpalette und UI-Komponenten zur besseren visuellen Trennung von Bereichen und Inhalten.
+
+- **Neue Funktion: Zeitauswahl auf der Buchungsseite**:
+  - Nutzer können nun für Buchungen einen **Zeitraum auswählen** (Start- und Endzeit).
+  - Visuelles Feedback bei ungültigen Eingaben (z. B. Endzeit vor Startzeit).
+  - Optimierte Darstellung und Integration in die Buchungsübersicht.
+
+---
+
+### Ziele bis zum nächsten Sprint:
+
+1. **User Experience weiter optimieren**
+
+   - Verbesserte Animationen und Übergänge für eine flüssigere Bedienung.
+   - Klarere Rückmeldungen bei Aktionen wie Login, Buchung oder Fehlern.
+   - Anpassung von Buttons, Modals und Interaktionen für mehr Barrierefreiheit und intuitive Nutzung.
+
+2. **Refactoring: Umstellung von `fetch` auf `import`**
+   - Umstellung bisheriger `fetch`-basierter Datenaufrufe auf modulare Daten-Imports.
+
+---
+
+### Screenshot der GitHub-Insights Statistik:
+
+![Github Insight Screenshot](./githubInsights/codeFrequency2205.png)  
+![Github Insight Screenshot](./githubInsights/commitHistory2205.png)
 
 **Ende der Sprint-Dokumentation**
