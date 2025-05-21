@@ -1,81 +1,44 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM fully loaded");
-    
-    const userName = localStorage.getItem('userName') || 'Gast';
-    const welcomeSection = document.getElementById('welcome-section');
-    if (welcomeSection) {
-        welcomeSection.textContent = `Willkommen zurück, ${userName}!`;
-    }
-    
-    if (!localStorage.getItem('bookings')) {
-    const sampleBookings = [
-        {
-            place: "Büroraum A01",
-            date: new Date(Date.now() + 86400000).toISOString().split('T')[0], 
-            timeFrom: "14:00",
-            timeTo: "15:30",
-            cancelled: false
-        },
-        {
-            place: "Konferenzraum C",
-            date: new Date(Date.now() - 86400000).toISOString().split('T')[0], 
-            timeFrom: "10:00",
-            timeTo: "11:00",
-            cancelled: false
-        }
-    ];
-    localStorage.setItem('bookings', JSON.stringify(sampleBookings));
-    console.log("Sample bookings created");
-}
+document.addEventListener('DOMContentLoaded', function () {
+  initAccountSettings();
+  loadBookings();
+  initLogout();
+  initTabFunctionality();
 
-    
-    initAccountSettings();
-    
+  const activeTab = document.querySelector('.sidebar-menu-item.active');
+  if (activeTab && activeTab.getAttribute('data-tab') === 'bookings') {
     loadBookings();
-
-    initLogout();
-    
-    initTabFunctionality();
+  }
 });
 
+
+
 function initTabFunctionality() {
-    console.log("Initializing tab functionality");
     const tabButtons = document.querySelectorAll('[data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel');
     
    
     
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const tabName = this.getAttribute('data-tab');
-            console.log(`Tab clicked: ${tabName}`);
-            
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            tabPanels.forEach(panel => {
-                if (panel.id === `${tabName}-tab`) {
-                    panel.classList.add('active');
+  tabButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    const tabName = this.getAttribute('data-tab');
 
-                    
-                    if (tabName === 'bookings') {
-                        console.log("Reloading bookings on tab switch");
-                        loadBookings();
-                    }
-                } else {
-                    panel.classList.remove('active');
-                }
-            });
-            
-            if (window.innerWidth < 768 && typeof window.closeSidebarFunc === 'function') {
-                window.closeSidebarFunc();
-            }
-        });
-    });
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+
+    tabPanels.forEach(panel => panel.classList.remove('active'));
+    const activePanel = document.getElementById(`${tabName}-tab`);
+    activePanel.classList.add('active');
+
+    if (tabName === 'bookings') {
+      loadBookings();
+    }
+
+   
+  });
+});
 }
 
 function initAccountSettings() {
-    console.log("Initializing account settings");
     const userForm = document.getElementById('user-settings-form');
     
     if (!userForm) return;
@@ -139,22 +102,18 @@ function initAccountSettings() {
 }
 
 function initLogout() {
-    console.log("Initializing logout functionality");
     
     const logoutButton = document.querySelector('.sidebar-menu-item:has(i.fas.fa-sign-out-alt)');
     
     if (logoutButton) {
-        console.log("Logout button found, adding click event");
         logoutButton.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log("Logout clicked");
             
             localStorage.clear();
             
             window.location.href = '../index.html';
         });
     } else {
-        console.log("Logout button not found");
     }
 }
 
@@ -187,27 +146,21 @@ function showFeedback(message, type) {
 }
 
 function loadBookings() {
-    console.log("Loading bookings");
     const currentBookingsContainer = document.getElementById('current-bookings');
     const pastBookingsContainer = document.getElementById('past-bookings');
     
-    console.log("Current bookings container found:", !!currentBookingsContainer);
-    console.log("Past bookings container found:", !!pastBookingsContainer);
     
     if (!currentBookingsContainer && !pastBookingsContainer) {
-        console.log("Booking containers not found, exiting loadBookings()");
         return;
     }
     
     const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-    console.log(`Found ${bookings.length} bookings in localStorage`);
     
     const now = new Date();
     
     const current = bookings.filter(b => new Date(b.date) >= now && !b.cancelled);
     const past = bookings.filter(b => new Date(b.date) < now || b.cancelled);
     
-    console.log(`Current bookings: ${current.length}, Past bookings: ${past.length}`);
     
     if (currentBookingsContainer) displayBookings(current, 'current-bookings');
     if (pastBookingsContainer) displayBookings(past, 'past-bookings');
