@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
             moodAudio.currentTime = 0;
         }
 
+        // Muik nach Mood abspielen
         const moodMusicMap = {
             'gemütlich': 'cozy.mp3',
             'produktiv': 'productive.mp3',
