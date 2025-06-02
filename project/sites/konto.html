@@ -10,27 +10,35 @@
   <link rel="stylesheet" href="../styles/konto.css">
   <link rel="stylesheet" href="../styles/responsive.css">
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#6D4C3D',
-            secondary: '#F5F5F5',
-            accent: '#D2B48C',
-            rose: '#FECACA',
-            mint: '#D1FAE5',
-            lilac: '#E0E7FF',
-            dark: '#1F2937',
-            cream: '#F8F3E6',
-            mocha: '#8B5A2B',
-            latte: '#E6D2B5',
-          }
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-        }
-      }
+   tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#6D4C3D',
+        secondary: '#C9A88D',
+        accent: '#E2B4A0',
+        dark: '#4A3F35',
+        light: '#F8F1E9',
+        white: '#FFFFFF',
+        graylight: '#F0F0F0',
+      },
+      boxShadow: {
+        sm: '0 1px 3px rgba(0,0,0,0.08)',
+        md: '0 4px 6px rgba(0,0,0,0.1)',
+        lg: '0 10px 15px rgba(0,0,0,0.15)',
+      },
+      borderRadius: {
+        sm: '0.25rem',
+        md: '0.5rem',
+        lg: '1rem',
+      },
+    },
+    fontFamily: {
+      sans: ['Inter', 'sans-serif'],
     }
+  }
+}
+
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -186,7 +194,7 @@
 
 <main class="flex-1 p-0 md:ml-64 lg:ml-72 mt-0">
     <div class="max-w-4xl mx-auto pt-0 md:pt-0">      
-      <div id="bookings-tab" class="tab-panel active">
+      <div id="bookings-tab" class="mt-12" class="tab-panel active">
         <div class="bg-white p-6 rounded-xl shadow-md mb-6">
           <h2 class="text-2xl font-semibold mb-6 text-primary">Meine Buchungen</h2>
           

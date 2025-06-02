@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         placeModal.classList.remove('modal-visible');
         placeModal.classList.add('hidden');
         document.body.style.overflow = '';
+        map.setView([52.52, 13.405], 13);
     }
 
     function toggleFavorite(placeName) {
